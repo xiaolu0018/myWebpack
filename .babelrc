@@ -1,0 +1,12 @@
+{
+  "presets": ["es2015","react"]
+//  "presets":["evn"],//根据需要编译es6代码
+//  "plugins": [
+//    ["transform-runtime", {
+//      "helpers": true,//extends和某些对象方法函数编译
+//      "polyfill": true,//set,map,promise，tec
+//      "regenerator": true,//generator函数编译
+//      "moduleName": "babel-runtime"
+//    }]
+//  ]
+}
