@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack=require('webpack');
+
 var node_modules = path.resolve(__dirname, 'node_modules');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
@@ -44,8 +45,14 @@ module.exports = {
         historyApiFallback: true,//路径自动跳到index.html(传对象，可以做路由跳转)
         hot: true,//是否热替换特性
         inline: true,//devserver两种模式inline和iframe
-        port: 8080,//端口号
         contentBase: './build',//服务器从哪里提供内容
+
+        proxy: {
+            '/db': {
+                target: 'http://localhost:9090',
+                secure: false
+            }
+        }
 
         //不常用config
         // color:true,//文件多色
@@ -88,8 +95,8 @@ module.exports = {
             // }
         }),
         new CommonsChunkPlugin({//提取公共代码和重复引用代码
-            name:["common","vendor","load"],
-            minChunks:Infinity
+            name:["common","vendor"],
+            minChunks:2
         })
     ]
 };
