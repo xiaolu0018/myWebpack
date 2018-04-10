@@ -7,11 +7,11 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 var ROOT_PATH = path.resolve(__dirname);
-var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
+var BUILD_PATH = path.resolve(ROOT_PATH, 'src');
 module.exports = {
     entry: {
-        vendor:['react','react-dom'],
-        app:path.resolve(__dirname, './app/components/test1.jsx')
+        
+        app:path.resolve(__dirname, './src/es6.js')
     },
 
     output: {
@@ -84,7 +84,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         //自动生成处理后的html
         new HtmlwebpackPlugin({
-            title: 'react-webpack-demo',//标题对应的模板html，要拿title属性（<%= htmlWebpackPlugin.options.title %>）
+            //title: 'react-webpack-demo',//标题对应的模板html，要拿title属性（<%= htmlWebpackPlugin.options.title %>）
             filename: 'index.html',//生成文件名
             template:'./index.html',//模板html路径
             inject:'body',//是否注入和注入的位置（body,head）
@@ -95,7 +95,7 @@ module.exports = {
             // }
         }),
         new CommonsChunkPlugin({//提取公共代码和重复引用代码
-            name:["common","vendor"],
+            name:["common"],
             minChunks:2
         })
     ]

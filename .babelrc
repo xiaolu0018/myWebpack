@@ -1,5 +1,5 @@
-{
-  "presets": ["es2015","react"]
+﻿{
+  "presets": ["es2015"]
 //  "presets":["evn"],//根据需要编译es6代码
 //  "plugins": [
 //    ["transform-runtime", {
